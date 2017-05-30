@@ -11,11 +11,20 @@
             <ion-icon name="arrow-round-back"></ion-icon>
         </button>
     </ion-buttons>
-    <ion-title>Listas</ion-title>
+    <ion-title>{{title}}</ion-title>
   </ion-navbar>
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-list>
+  <button ion-item *ngFor="let obj of items">
+    <ion-avatar item-left>
+      <img src="http://localhost/SearchInclusive/{{obj.url}}">
+    </ion-avatar>
+    <h2>{{obj.nombre}}</h2>
+    <p>{{obj.direccion}}</p>
+  </button>
+</ion-list>
 
 </ion-content>
