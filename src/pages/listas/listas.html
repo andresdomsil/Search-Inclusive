@@ -19,8 +19,8 @@
 <ion-content>
   <ion-list>
   <button ion-item *ngFor="let obj of items">
-    <ion-avatar item-left>
-      <img src="http://localhost/SearchInclusive/{{obj.url}}">
+    <ion-avatar item-left *ngIf="obj.url!=null">
+      <img src="http://sedely.com.mx/SI/{{obj.url}}">
     </ion-avatar>
     <h2>{{obj.nombre}}</h2>
     <p>{{obj.direccion}}</p>

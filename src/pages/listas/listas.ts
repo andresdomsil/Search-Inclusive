@@ -23,17 +23,15 @@ export class ListasPage {
 
   ionViewDidLoad() {
     this.id=this.navParams.get("id_cat");
-    var link = 'http://localhost/SearchInclusive/controllers/LugarController.php?op=1&id='+this.id;
+    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=1&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.items= data.json();
-            console.log(this.items);
           });
-    var link = 'http://localhost/SearchInclusive/controllers/LugarController.php?op=3&id='+this.id;
+    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=3&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.title= data.text();
-            console.log(this.title);
           });
   }
 
