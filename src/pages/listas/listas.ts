@@ -13,12 +13,20 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'listas.html',
 })
 export class ListasPage {
-
+  public id: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ListasPage');
+    this.id=this.navParams.get("id_cat");
+    console.log("el id es "+this.id);
+    
   }
+
+  cerrar(){
+    this.navCtrl.pop();
+  }
+
+  
 
 }
