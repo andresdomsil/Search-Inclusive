@@ -1,10 +1,11 @@
 <!--
-  Generated template for the ListasPage page.
+  Generated template for the LugarPage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
 <ion-header>
+
   <ion-navbar hideBackButton>  
     <ion-buttons left>
         <button ion-button (click)="cerrar()">
@@ -13,18 +14,23 @@
     </ion-buttons>
     <ion-title>{{title}}</ion-title>
   </ion-navbar>
+
 </ion-header>
 
 
 <ion-content>
-  <ion-list>
-  <button ion-item *ngFor="let obj of items" (click)="irLugar(obj.id)">
-    <ion-avatar item-left *ngIf="obj.url!=null">
-      <img src="http://sedely.com.mx/SI/{{obj.url}}">
-    </ion-avatar>
-    <h2>{{obj.nombre}}</h2>
-    <p>{{obj.direccion}}</p>
-  </button>
-</ion-list>
+  <ion-slides pager="true">
+    <ion-slide  *ngFor="let img of imagenes">
+      <img src="http://sedely.com.mx/SI/{{img.url}}"/>
+    </ion-slide>
+  </ion-slides>
+  <div *ngFor="let lug of lugar" padding>
+    <h1>{{lug.nombre}}</h1>
+    <h4>Descripción:</h4>
+    <p>{{lug.descripcion}}</p>
+    <br>
+    <h4>Telefonos:</h4>
+    <p>{{lug.telefono}}</p>
+  </div>
 
 </ion-content>
