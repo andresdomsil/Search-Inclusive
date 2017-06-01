@@ -28,9 +28,16 @@
     <h1>{{lug.nombre}}</h1>
     <h4>Descripción:</h4>
     <p>{{lug.descripcion}}</p>
-    <br>
     <h4>Telefonos:</h4>
     <p>{{lug.telefono}}</p>
+    <button ion-item (click)="irMapa()">
+      <ion-avatar item-left>
+        <ion-icon name="compass"></ion-icon>
+      </ion-avatar>
+      <br>
+      <h4>Dirección</h4>
+      <p>{{lug.direccion}}</p>
+    </button>
   </div>
-
+  
 </ion-content>

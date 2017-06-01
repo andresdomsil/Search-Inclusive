@@ -8,4 +8,11 @@ page-lugar {
         height: auto;
         margin: auto;
     }
+    ion-avatar{
+        font-size: 30px;
+    }
+    button ion-avatar ion-icon{
+        font-size: 40px;
+        padding-top: 12px;
+    }
 }

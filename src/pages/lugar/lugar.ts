@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Http } from "@angular/http";
 import { Geolocation } from '@ionic-native/geolocation';
+import { MapaPage } from '../mapa/mapa';
 /**
  * Generated class for the LugarPage page.
  *
@@ -14,10 +15,13 @@ import { Geolocation } from '@ionic-native/geolocation';
   templateUrl: 'lugar.html',
 })
 export class LugarPage {
-  public id       : any;
-  public title    : any;
-  public lugar    : any[];
-  public imagenes : any[];
+  public id         : any;
+  public title      : any;
+  public lat        : any;
+  public lon        : any;
+  public titleLugar : any;
+  public lugar      : any[];
+  public imagenes   : any[];
   constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public geolocation: Geolocation) {
   }
 
@@ -26,8 +30,10 @@ export class LugarPage {
     var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=2&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
-            this.lugar= data.json();
-            
+            this.lugar= data.json();            
+            this.lat=this.lugar[0].lat;
+            this.lon=this.lugar[0].lon;
+            this.titleLugar=this.lugar[0].nombre;
           });
     var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=4&id='+this.id;
     this.http.get(link)
@@ -45,15 +51,11 @@ export class LugarPage {
     this.navCtrl.pop();
   }
 
-  ubicacion(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      console.log(resp.coords.latitude);
-      console.log(resp.coords.longitude);
-      
-    // resp.coords.latitude
-    // resp.coords.longitude
-    }).catch((error) => {
-      console.log('Error getting location', error);
+  irMapa(){
+    this.navCtrl.push(MapaPage,{
+      lat   : this.lat,
+      lon   : this.lon,
+      title : this.titleLugar
     });
   }
 
