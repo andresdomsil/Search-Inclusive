@@ -25,12 +25,12 @@ export class ListasPage {
 
   ionViewDidLoad() {
     this.id=this.navParams.get("id_cat");
-    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=1&id='+this.id;
+    var link = 'http://localhost/searchinclusive/controllers/LugarController.php?op=1&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.items= data.json();
           });
-    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=3&id='+this.id;
+    var link = 'http://localhost/searchinclusive/controllers/LugarController.php?op=3&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.title= data.text();
@@ -41,9 +41,10 @@ export class ListasPage {
     this.navCtrl.pop();
   }
 
-  irLugar(id){
+  irLugar(id_cat,id_lug){
     this.navCtrl.push(LugarPage, {
-      id_lugar : id
+      id_lugar : id_lug,
+      id_cat: id_cat
     })
   }
 

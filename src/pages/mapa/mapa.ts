@@ -91,7 +91,7 @@ export class MapaPage {
 
 
   cerrar(){
-    this.mark.remove();
+    this.map=null;
     this.navCtrl.pop();
   }
 

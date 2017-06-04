@@ -16,6 +16,7 @@ import { MapaPage } from '../mapa/mapa';
 })
 export class LugarPage {
   public id         : any;
+  public id_cat     : any;
   public title      : any;
   public lat        : any;
   public lon        : any;
@@ -27,7 +28,8 @@ export class LugarPage {
 
   ionViewDidLoad() {
     this.id=this.navParams.get("id_lugar");
-    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=2&id='+this.id;
+    this.id_cat=this.navParams.get("id_cat");
+    var link = 'http://localhost/searchinclusive/controllers/LugarController.php?op=2&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.lugar= data.json();            
@@ -35,12 +37,12 @@ export class LugarPage {
             this.lon=this.lugar[0].lon;
             this.titleLugar=this.lugar[0].nombre;
           });
-    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=4&id='+this.id;
+    var link = 'http://localhost/searchinclusive/controllers/LugarController.php?op=4&id='+this.id;
     this.http.get(link)
           .subscribe(data => {
             this.imagenes= data.json();
           });
-    var link = 'http://sedely.com.mx/SI/controllers/LugarController.php?op=3&id='+this.id;
+    var link = 'http://localhost/searchinclusive/controllers/LugarController.php?op=3&id='+this.id_cat;
     this.http.get(link)
           .subscribe(data => {
             this.title= data.text();
